@@ -1,12 +1,13 @@
 const Table = require('cli-table3');
 const chalk = require('chalk');
 const db = require('../lib/db');
+const { isPortLive } = require('../lib/detect');
 
 module.exports = (program) => {
   program
     .command('list')
     .description('Shows all registered ports across all your projects')
-    .action(() => {
+    .action(async () => {
       const ports = db.listPorts();
 
       if (ports.length === 0) {
@@ -14,23 +15,25 @@ module.exports = (program) => {
         return;
       }
 
-      // In Phase 1 we only have registered status, no live detection yet.
       const table = new Table({
         head: [
           chalk.cyan('PORT'),
           chalk.cyan('PROJECT'),
           chalk.cyan('DESCRIPTION'),
+          chalk.cyan('STATUS')
         ],
         style: { head: [], border: [] }
       });
 
-      ports.forEach((p) => {
+      for (const p of ports) {
+        const live = await isPortLive(p.port);
         table.push([
-          chalk.green(p.port.toString()),
+          live ? chalk.green(p.port.toString()) : chalk.yellow(p.port.toString()),
           p.project,
-          p.description || chalk.gray('-')
+          p.description || chalk.gray('-'),
+          live ? chalk.bgGreen.black(' LIVE ') : chalk.gray('idle')
         ]);
-      });
+      }
 
       console.log(table.toString());
     });
