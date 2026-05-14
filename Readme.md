@@ -205,15 +205,29 @@ What would you like to do?
 
 ## Installation
 
+Portfile is published on npm! You can install it globally with a single command:
+
 **Requirements:** Node.js 16+
 
 ```bash
-git clone https://github.com/yourusername/portfile.git
+npm install -g portfile
+```
+*(Note: on macOS/Linux, you might need to use `sudo npm install -g portfile` depending on your global permissions)*
+
+You can also run it instantly without installing by using `npx`:
+```bash
+npx portfile list
+```
+
+### Manual / Development Installation
+
+If you want to build from source or contribute:
+```bash
+git clone https://github.com/akt9802/portFile.git
 cd portfile
 npm install
 npm link
 ```
-
 After linking, `portfile` works from any directory on your machine.
 
 ---
