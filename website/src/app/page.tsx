@@ -1,10 +1,13 @@
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-zinc-300 font-sans selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#0A0A0B] text-zinc-300 font-sans selection:bg-emerald-500/30 overflow-x-hidden relative">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+      
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md border-b border-white/5 bg-[#0A0A0B]/80">
         <div className="flex items-center gap-2 font-bold text-white text-xl tracking-tight">
-          <span className="text-emerald-500 text-2xl">🔌</span> portfile
+          <span className="text-emerald-500 text-2xl">🔌</span> portFile
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-mono text-zinc-500">
           <a href="#problem" className="hover:text-emerald-400 transition-colors">/00 problem</a>
@@ -12,7 +15,7 @@ export default function Home() {
           <a href="#how" className="hover:text-emerald-400 transition-colors">/02 how it works</a>
         </div>
         <div className="flex items-center gap-4">
-          <a href="https://github.com/amankumar/portfile" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white border border-white/10 rounded-full hover:bg-white/5 transition">
+          <a href="https://github.com/akt9802/portFile" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white border border-white/10 rounded-full hover:bg-white/5 transition">
              GitHub
           </a>
         </div>
@@ -112,7 +115,41 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* CTA Section */}
+        <section className="mt-40 mb-20">
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#121212] px-8 py-16 text-center shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent opacity-50 pointer-events-none"></div>
+            <h2 className="text-3xl md:text-5xl font-medium text-white mb-6 relative z-10">Ready to tame your ports?</h2>
+            <p className="text-zinc-400 max-w-xl mx-auto mb-8 relative z-10">Start managing your team's local development environment today. No more "port is already in use" errors.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+              <code className="px-6 py-3 rounded-xl bg-black border border-white/10 font-mono text-emerald-400 text-sm shadow-xl flex items-center gap-3">
+                 $ npm install -g portfile 
+                 <svg className="w-4 h-4 text-zinc-500 cursor-pointer hover:text-white transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              </code>
+              <a href="https://github.com/akt9802/portFile" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-xl bg-white text-black font-medium hover:bg-zinc-200 transition">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5 bg-[#0A0A0B] py-12 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2 font-bold text-white text-lg tracking-tight opacity-50 hover:opacity-100 transition">
+            <span className="text-emerald-500 text-xl">🔌</span> portFile
+          </div>
+          <p className="text-zinc-500 text-sm">
+            Built for developers tired of EADDRINUSE. Open source under the MIT License.
+          </p>
+          <div className="flex gap-4 text-sm font-mono text-zinc-500">
+            <a href="https://github.com/akt9802/portFile" className="hover:text-emerald-400 transition-colors">github</a>
+            <a href="https://npmjs.com/package/portfile" className="hover:text-emerald-400 transition-colors">npm</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
