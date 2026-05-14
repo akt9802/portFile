@@ -1,0 +1,16 @@
+# Ignore everything related to the Next.js landing page
+website/
+
+# Ignore tests
+tests/
+
+# Ignore internal development documentation
+implementation.md
+HOW_TO_USE.md
+
+# Ignore local config files
+.portfile
+.DS_Store
+
+# Note: npm automatically includes package.json, src/, bin/, and Readme.md
+# because they are either explicitly needed or not ignored here.
